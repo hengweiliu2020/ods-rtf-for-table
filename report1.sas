@@ -130,7 +130,11 @@ ods escapechar='~';
 
 ods rtf file="C:\reporting\class.rtf" style=custom;
 
-proc report data=class headline headskip;
+proc report data=class headline headskip split='^' style = [outputwidth=100% cellpadding=1]
+style(header)=[asis=on just=c protectspecialchars=off]
+style(column)=[asis=on just=c protectspecialchars=off];
+
+
 columns region name 
  ("~S={borderbottomcolor=black borderbottomwidth=2} SEX AND AGE" sex age) 
 ("~S={borderbottomcolor=white borderbottomwidth=2} " col1)
